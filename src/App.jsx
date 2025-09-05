@@ -1,5 +1,6 @@
 import './App.css'
 import { Navbar } from './components/Navbar'
+import { Login } from './components/Login'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {

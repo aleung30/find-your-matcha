@@ -1,12 +1,14 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import supabase from "../helper/supabaseClient"
 
 export const Register = () => {
 
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [username, setUsername] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,7 +20,8 @@ export const Register = () => {
             options: {
                 data: {
                     display_name: username
-                }
+                }, 
+                emailRedirectTo: "http://localhost:5173/login" // temporary link 
             }
         });
 
@@ -28,7 +31,9 @@ export const Register = () => {
         }
 
         if (data) {
-            setMessage("User account created!")
+            alert("User account created!");
+            navigate('/login');
+            
         }
 
         setEmail("");

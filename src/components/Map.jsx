@@ -63,7 +63,7 @@ const Map = () => {
     mapRef.current.addControl(new mapboxgl.NavigationControl());
   }, []);
 
-  return <div id="map" ref={mapContainerRef} style={{ height: "50vh", width: "100vh"}} />;
+  return <div id="map" ref={mapContainerRef} style={{ height: "100vh", width: "100vh"}} />;
 };
 
 export default Map;

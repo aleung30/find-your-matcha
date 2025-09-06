@@ -41,7 +41,35 @@ export const Register = () => {
             <div className="w-full max-w-md space-y-8 rounded-2xl bg-gray-800 p-8 shadow-lg">
                 <form className="temp" onSubmit={handleSubmit}>
                     <div>
-                        <h2 className="text-center text-2xl font-bold tracking-tight text-white">Create an account!</h2>
+                        <h2 className="text-center mb-4 text-2xl font-bold tracking-tight text-white">Create an account!</h2>
+                    </div>
+                    {/* container for input fields */}
+                    <div className="space-x-3">
+
+                        <input className="w-full mb-2 rounded-lg border border-gray-600 bg-gray-700 px-4 py-2 text-white placeholder-gray-400 focus:border-red-100 focus:outline-none focus:ring-2 focus:ring-red-400"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        type="email"
+                        placeholder="Email" required>
+                        </input>
+
+                        <input className="w-full mb-2 rounded-lg border border-gray-600 bg-gray-700 px-4 py-2 text-white placeholder-gray-400 focus:border-red-100 focus:outline-none focus:ring-2 focus:ring-red-400"
+                        onChange={(e) => setUsername(e.target.value)}
+                        value={username}
+                        type="username"
+                        placeholder="Username" required>
+                        </input>
+
+                        <input className="w-full mb-2 rounded-lg border border-gray-600 bg-gray-700 px-4 py-2 text-white placeholder-gray-400 focus:border-red-100 focus:outline-none focus:ring-2 focus:ring-red-400"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        type="password"
+                        placeholder="Password" required>
+                        </input>
+
+                        <button>
+                            
+                        </button>
                     </div>
                 </form>
             </div>

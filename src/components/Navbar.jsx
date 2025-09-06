@@ -4,6 +4,7 @@ import { HiMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
 import supabase from "../helper/supabaseClient";
+import logo from "../assets/logo.png";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,16 +32,25 @@ export const Navbar = () => {
   return (
     <section>
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link to="/" className="text-xl text-black">
-          Logo
+  
+        <Link to="/" className="text-xl text-black flex gap-5">
+        <img className="h-15 w-15" src={logo}/>
+        <div className="flex-1">
+        <p className="font-semibold text-[#37532B]">
+            Find Your
+        </p>
+        <p className="font-bold text-black">Matcha</p>
+        </div>
+
         </Link>
+
 
         {/* desktop menu */}
 
         <ul className="hidden md:flex items-center gap-4">
           {!isOnReviewPage && (
             <li>
-              <Link to="/review" className="bg-[#D9D9D9] rounded-[10px] px-5 py-2 text-xl">
+              <Link to="/review" className=" px-5 py-2 text-xl font-semibold">
                 write a review
               </Link>
             </li>
@@ -49,13 +59,13 @@ export const Navbar = () => {
           {!authenticated ? (
             <>
                         <li>
-            <Link to="/login" className="bg-[#F1CCCC] rounded-[10px] px-5 py-2 text-xl text-xl">
+            <Link to="/login" className="bg-[#F1CCCC] rounded-[10px] px-5 py-2 text-xl font-semibold">
               login
             </Link>
           </li>
 
           <li>
-            <Link to="/register" className="bg-[#FADEDA] rounded-[10px] px-5 py-2 text-xl">
+            <Link to="/register" className="bg-[#FADEDA] rounded-[10px] px-5 py-2 text-xl font-semibold">
               sign up
             </Link>
           </li>

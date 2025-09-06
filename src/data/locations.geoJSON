@@ -1,0 +1,11 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [49.252557159988235, -123.08066099076889]
+  },
+  "properties": {
+    "name": "Matcha Corner",
+    "amenity": "cafe"
+  }
+}

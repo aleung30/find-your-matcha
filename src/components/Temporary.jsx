@@ -5,6 +5,8 @@ import nana from "../assets/nana.jpg";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import Searchbox from "./Searchbox";
 import { useState } from "react";
+import Checkbox from "./Checkbox";
+import StarRating from "./StarRating";
 
 export const Temporary = () => {
     const [inputValue, setInputValue] = useState(null);
@@ -92,9 +94,11 @@ export const Temporary = () => {
       <div className="flex flex-1 justify-between gap-6 p-4">
   
               {/* Left: Searchbox */}
-              <div className="w-1/3 p-4 bg-[#E7D1D1] rounded-[10px] ">
+              <div className="flex flex-col w-1/3 p-4 bg-[#E7D1D1] rounded-[10px] ">
               <Searchbox
                />
+               <Checkbox/>
+               <StarRating/>
 
               </div>
 

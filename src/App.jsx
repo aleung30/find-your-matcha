@@ -7,6 +7,7 @@ import { Home } from './components/Home'
 import Map from './components/Map'
 import { Temporary } from './components/Temporary'
 import { Review } from './components/Review'
+import { Locations } from './components/Locations'
 
 function App() {
 
@@ -62,7 +63,14 @@ function App() {
 
             </Route>
 
-            
+            {/* Locations */}
+            <Route path="/add" element={
+              <>
+                <Locations/>
+              </>
+            }>
+
+            </Route>
 
           </Routes>
         </div>

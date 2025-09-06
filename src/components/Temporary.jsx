@@ -3,10 +3,14 @@ import paragon from "../assets/paragon.jpg";
 import corner from "../assets/corner.jpg";
 import nana from "../assets/nana.jpg";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import Searchbox from "./Searchbox";
+import { useState } from "react";
 
 export const Temporary = () => {
+    const [inputValue, setInputValue] = useState(null);
+
   return (
-    <div className="h-screen justify-center">
+    <div className="h-screen justify-center flex flex-col">
       {/* Left: Cards section */}
       <h2 className="text-xl font-bold mb-4 text-center">Top Matcha Spots of the Month 🍵</h2>
       <div className="w-full bg-[#ECF0E7] p-4 overflow-x-auto h-1/3 flex gap-6">
@@ -84,10 +88,29 @@ export const Temporary = () => {
         </div>
       </div>
 
+      {/* Bottom: Searchbox & Map */}
+      <div className="flex flex-1 justify-between gap-6 p-4">
+  
+              {/* Left: Searchbox */}
+              <div className="w-1/3 p-4 bg-[#E7D1D1] rounded-[10px] ">
+              <Searchbox
+               />
+
+              </div>
+
       {/* Right: Map */}
-      <div className="flex-1 justify-end h-2/3 w-2/3 p-4 rounded-[10px] bg-[#ECF0E7]">
+      <div className="h-full w-2/3">
+    
+  
         <Map className="p-4"></Map>
-      </div>
+        </div>
+        </div>
+   
+
+       
+
+
+    
     </div>
   );
 };

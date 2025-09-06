@@ -70,7 +70,7 @@ const Map = () => {
     });
   }, [locations]);
 
-  return <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />;
+  return <div ref={mapContainerRef} style={{ height: "100%", width: "100%" }} />;
 };
 
 export default Map;

@@ -5,6 +5,8 @@ import { Register } from './components/Register'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './components/Home'
 
+import { Temporary } from './components/Temporary'
+
 function App() {
 
   return (
@@ -17,29 +19,32 @@ function App() {
               <>
                 <Navbar/>
                 <Home/>
+                <Temporary/>
               </>
             }>
             </Route>
 
             {/* login */}
-            <Route>
-              <Route path="/login" element={
+            
+            <Route path="/login" element={
                 <>
                   <Login/>
                 </>
               }>
 
-              </Route>
+            </Route>
 
-              {/* register */}
-              <Route path="/register" element={
+            {/* register */}
+            <Route path="/register" element={
                 <>
                   <Register/>
                 </>
-              }>
+            }>
 
-              </Route>
             </Route>
+              
+         
+            
 
           </Routes>
         </div>

@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
 export const Register = () => {
 
     const [email, setEmail] = useState('')
@@ -67,9 +69,9 @@ export const Register = () => {
                         placeholder="Password" required>
                         </input>
 
-                        <button>
-                            
-                        </button>
+                        <button className="w-full mb-4 rounded-lg bg-gray-500 px-4 py-2 font-semibold text-white shadow focus:outline-none focus:ring-2 focus:ring-red-200"
+                        type="submit">Create Account</button>
+                        <p className="text-center text-sm text-gray-400">Already have an account? <Link className="text-white hover:text-gray-300" to="/login">Login</Link></p>
                     </div>
                 </form>
             </div>

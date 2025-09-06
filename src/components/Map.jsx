@@ -1,69 +1,76 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
+import supabase from "../helper/supabaseClient";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const Map = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
+  const [locations, setLocations] = useState([]);
 
+  // get the locations from supabase
   useEffect(() => {
+    const fetchLocations = async () => {
+      const { data, error } = await supabase
+        .from("locations")
+        .select("id, name, address, longitude, latitude");
+      
+      if (error) {
+        console.error("Error fetching locations:", error);
+        return;
+      }
+      
+      console.log("Fetched locations:", data);
+      setLocations(data);
+    };
+
+    fetchLocations();
+  }, []);
+
+  // initializing mapbox map
+  useEffect(() => {
+    if (mapRef.current) return;
+
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/standard",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [-123.1207, 49.2827],
       zoom: 12,
-    });
-
-    mapRef.current.on("load", async () => {
-      // fetch GeoJSON file
-      const response = await fetch("/locations.geojson");
-      const geojson = await response.json();
-
-      // geoJSON as a new source
-      mapRef.current.addSource("matcha-places", {
-        type: "geojson",
-        data: geojson,
-      });
-
-      // will map locations in geoJSON as red dots
-      mapRef.current.addLayer({
-        id: "matcha-places-layer",
-        type: "circle",
-        source: "matcha-places",
-        paint: {
-          "circle-radius": 6,
-          "circle-color": "#FF0000",
-          "circle-stroke-width": 2,
-          "circle-stroke-color": "#fff",
-        },
-      });
-
-      // popup on click - info
-      mapRef.current.on("click", "matcha-places-layer", (e) => {
-        const coords = e.features[0].geometry.coordinates.slice();
-        const props = e.features[0].properties;
-
-        new mapboxgl.Popup()
-          .setLngLat(coords)
-          .setHTML(`<strong>${props.name}</strong><br/>${props.amenity}`)
-          .addTo(mapRef.current);
-      });
-
-      // cursor changes on hover
-      mapRef.current.on("mouseenter", "matcha-places-layer", () => {
-        mapRef.current.getCanvas().style.cursor = "pointer";
-      });
-      mapRef.current.on("mouseleave", "matcha-places-layer", () => {
-        mapRef.current.getCanvas().style.cursor = "";
-      });
     });
 
     mapRef.current.addControl(new mapboxgl.NavigationControl());
   }, []);
 
-  return <div id="map" ref={mapContainerRef} style={{ height: "100vh", width: "100vh"}} />;
+  // add red markers
+  useEffect(() => {
+    if (!mapRef.current || locations.length === 0) return;
+
+    locations.forEach((loc) => {
+      const lon = parseFloat(loc.longitude);
+      const lat = parseFloat(loc.latitude);
+
+      if (isNaN(lon) || isNaN(lat)) {
+        console.warn(`Invalid coordinates for ${loc.name}`);
+        return;
+      }
+
+      new mapboxgl.Marker({ color: "red" })
+        .setLngLat([lon, lat])
+        .setPopup(
+          new mapboxgl.Popup().setHTML(`
+            <div>
+              <h3>${loc.name}</h3>
+              <p>${loc.address}</p>
+            </div>
+          `)
+        )
+        .addTo(mapRef.current);
+    });
+  }, [locations]);
+
+  return <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />;
 };
 
 export default Map;

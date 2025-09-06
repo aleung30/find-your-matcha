@@ -1,4 +1,5 @@
 import { useState } from "react";
+import supabase from "../helper/supabaseClient";
 
 export const Locations = () => {
     const [name, setName] = useState('');
@@ -16,11 +17,8 @@ export const Locations = () => {
 
         // call geocode API
         try {
-            const res = await fetch(
-                    `https://geocode.maps.co/search?q=${encodeURIComponent(
-                    address
-                    )}&api_key=${import.meta.env.VITE_GEOCODE_KEY}`
-            );
+            const geocodeUrl = `https://geocode.maps.co/search?q=${encodeURIComponent(address)}&api_key=${import.meta.env.VITE_GEOCODE_KEY}`;
+            const res = await fetch(geocodeUrl);
 
             const data = await res.json();
 
@@ -32,29 +30,31 @@ export const Locations = () => {
 
             const { lat, lon } = data[0];
 
-            // add GeoJSON object
-            const newLocation = {
-                type: "Feature",
-                geometry: {
-                type: "Point",
-                coordinates: [parseFloat(lon), parseFloat(lat)],
-                },
-                properties: {
-                name
-                },
-            };
+            // need to send new location added to supabase
 
-            // i need to add newLocation object to my locations.geojson located in public
+            const { data: insertData, error} = await supabase
+            .from('locations')
+            .insert({
+                name: name, 
+                address: address, 
+                location: `POINT(${lon} ${lat})`
+            })
+            .select();
 
-            console.log("New Location:", newLocation);
-            alert(message);
+            if (error) {
+                console.error("Error adding location:", error);
+                throw error;
+            }
+
+            console.log("Location added successfully:", insertData);
+
             setMessage("Location added successfully!");
             setName("");
             setAddress("");
 
-        } catch {
+        } catch (error) {
             console.error(error);
-            setMessage("Failed to add location");
+            setMessage("Failed to add new location");
         }
 
         setLoading(false);
@@ -89,6 +89,14 @@ export const Locations = () => {
                     >
                         {loading ? "Adding..." : "Add new location!"}
                     </button>
+                    {message && (
+                        <div className={`text-center text-sm font-medium ${
+                            message.includes('successfully') 
+                                ? 'text-green-600' 
+                                : 'text-red-600'
+                        }`}>{message}
+                        </div>
+                    )}
                 </form>
             </div>
         </div>

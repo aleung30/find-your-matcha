@@ -1,6 +1,6 @@
 import { error } from "console"
 import { useState } from "react"
-import supabase from "../../helper/supabaseClient";
+import supabase from "../helper/supabaseClient";
 
 
 export const Review = () => {

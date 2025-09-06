@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './components/Home'
 import Map from './components/Map'
 import { Temporary } from './components/Temporary'
-import { Review } from './components/Review'
 import { Locations } from './components/Locations'
 
 function App() {
@@ -54,14 +53,6 @@ function App() {
 
             </Route> 
             
-             {/* Review */}
-             <Route path="/review" element={
-              <>
-                <Review/>
-              </>
-             }>
-
-            </Route>
 
             {/* Locations */}
             <Route path="/add" element={

@@ -4,9 +4,10 @@ import { Login } from './components/Login'
 import { Register } from './components/Register'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './components/Home'
-import Map from './components/Map'
 import { Temporary } from './components/Temporary'
 import { Locations } from './components/Locations'
+import Wrapper from './components/Wrapper'
+import { Review } from './components/Review'
 
 function App() {
 
@@ -43,22 +44,24 @@ function App() {
             }>
 
             </Route>
-              
-            {/* test for map component */}
-            <Route path="/map" element={
-                <>
-                  <Map/>
-                </>
-              }>
 
-            </Route> 
+            {/* temporary review page */}
+            <Route path="/review" element={
+              <Wrapper>
+                <Navbar/>
+                <Review/>
+              </Wrapper>
+            }>
+
+            </Route>
             
 
-            {/* Locations */}
+            {/* matcha locations */}
             <Route path="/add" element={
-              <>
+              <Wrapper>
+                <Navbar/>
                 <Locations/>
-              </>
+              </Wrapper>
             }>
 
             </Route>

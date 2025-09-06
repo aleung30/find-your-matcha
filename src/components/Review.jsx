@@ -1,14 +1,30 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export const Review = () => {
-    
-=======
+import { error } from "console"
+import { useState } from "react"
+import supabase from "../../helper/supabaseClient";
 
 
 export const Review = () => {
+
+    const [username, setUsername] = useState(null)
+
+    useEffect (() => {
+        async function getUserInfo() {
+            const { data: { user } } = await supabase.auth.getUser()  
+
+            if (error) {
+                alert("Please try again")
+            }
+
+            setUsename(user)
+        }
+    }, [])
+
     return (
-        <h1>review</h1>
+        <div>
+            {!username &&
+                <p>Please Log in</p>
+                
+            }
+        </div>
     )
->>>>>>> 3a7ce8227089fe2c9dd2bfa5cea3bad12e4d94f5
 }

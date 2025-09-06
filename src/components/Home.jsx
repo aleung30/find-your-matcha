@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 export const Home = () => {
     return (
-        <div className="relative bg-[#ECF0E7] h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative bg-[#ECF0E7] min-h-screen flex items-center justify-center overflow-hidden">
             {/*text*/}
             <div className='text-center z-50 flex flex-col'>
                 <h2 className='font-extrabold text-7xl text-[#37532B]'>Find Your Matcha</h2>

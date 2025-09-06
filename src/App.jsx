@@ -4,7 +4,7 @@ import { Login } from './components/Login'
 import { Register } from './components/Register'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Home } from './components/Home'
-
+import Map from './components/Map'
 import { Temporary } from './components/Temporary'
 
 function App() {
@@ -43,7 +43,14 @@ function App() {
 
             </Route>
               
-         
+            {/* test for map component */}
+            <Route path="/map" element={
+                <>
+                  <Map/>
+                </>
+              }>
+
+            </Route>          
             
 
           </Routes>

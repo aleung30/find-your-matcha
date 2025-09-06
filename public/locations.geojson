@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.08066099076889,
+          49.252557159988235
+        ]
+      },
+      "properties": {
+        "name": "Matcha Corner",
+        "amenity": "cafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.03219358715293,
+          49.239681220908075
+        ]
+      },
+      "properties": {
+        "name": "Trees Organic Coffee Joyce-Collingwood",
+        "amenity": "cafe"
+      }
+    }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.03384654688922,
+          49.253758235674844
+        ]
+      },
+      "properties": {
+        "name": "Hanoi Drip Coffee",
+        "amenity": "cafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -123.11122402654611, 
+          49.282809575056625
+        ]
+      }, 
+      "properties": {
+        "name": "Saunter Coffee",
+        "amenity": "cafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -123.12998247731495, 
+          49.280086968811226
+        ]
+      }, 
+      "properties": {
+        "name": "Caffe Mira",
+        "amenity": "cafe"
+      }
+    }, 
+        {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -123.10474825698402, 
+          49.28221464421439
+        ]
+      }, 
+      "properties": {
+        "name": "Aiyaohno Cafe",
+        "amenity": "cafe"
+      }
+    }
+  ]
+}

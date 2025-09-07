@@ -8,6 +8,7 @@ import { Temporary } from './components/Temporary'
 import { Locations } from './components/Locations'
 import Wrapper from './components/Wrapper'
 import { Review } from './components/Review'
+import { Dashboard } from './components/Dashboard'
 
 function App() {
 
@@ -63,8 +64,16 @@ function App() {
                 <Locations/>
               </Wrapper>
             }>
-
             </Route>
+            
+            {/* user dashboard */}
+            <Route path="/dashboard" element={
+              <Wrapper>
+                <Navbar/>
+                <Dashboard/>
+              </Wrapper>
+            }>
+            </Route>            
 
           </Routes>
         </div>

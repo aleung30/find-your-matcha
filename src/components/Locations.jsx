@@ -30,6 +30,8 @@ export const Locations = () => {
 
             const { lat, lon } = data[0];
 
+            const { data: { user } } = await supabase.auth.getUser();
+
             // need to send new location added to supabase
 
             const { data: insertData, error} = await supabase
@@ -37,7 +39,8 @@ export const Locations = () => {
             .insert({
                 name: name, 
                 address: address, 
-                location: `POINT(${lon} ${lat})`
+                location: `POINT(${lon} ${lat})`, 
+                created_by: user?.id
             })
             .select();
 

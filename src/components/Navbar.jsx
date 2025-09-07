@@ -12,6 +12,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   const isOnReviewPage = location.pathname === "/review";
+  const isOnAddLocationPage = location.pathname === "/add";
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -49,16 +50,24 @@ export const Navbar = () => {
 
         <ul className="hidden md:flex items-center gap-4">
           {!isOnReviewPage && (
-            <li>
-              <Link to="/review" className=" px-5 py-2 text-xl font-semibold">
-                write a review
-              </Link>
-            </li>
+              <li>
+                <Link to="/review" className=" px-5 py-2 text-xl font-semibold">
+                  write a review
+                </Link>
+              </li>
+          )}
+          
+          {!isOnAddLocationPage && (
+              <li>
+                <Link to="/add" className=" px-5 py-2 text-xl font-semibold">
+                  add a new location
+                </Link>
+              </li>
           )}
 
           {!authenticated ? (
             <>
-                        <li>
+            <li>
             <Link to="/login" className="bg-[#F1CCCC] rounded-[10px] px-5 py-2 text-xl font-semibold">
               login
             </Link>
@@ -73,7 +82,7 @@ export const Navbar = () => {
           ) : (
             <li>
               <button onClick={handleSignOut}
-              className="bg-red-400 rounded-[10px] px-5 py-2 text-xl text-white">
+              className="bg-red-400 rounded-[10px] px-5 py-2 text-xl text-white font-semibold">
                 sign out
               </button>
             </li>

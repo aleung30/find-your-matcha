@@ -1,12 +1,67 @@
-# React + Vite
+# Find Your Matcha
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+ Find Your Matcha is a web platform that allows users to discover and review matcha cafes. Users can search for cafes that sell matcha, submit reviews, and explore an interactive map of matcha spots in the Lower Mainland. The application uses **Supabase** for backend services and **Mapbox API** for map integration.
 
-Currently, two official plugins are available:
+## Features
+- **User Authentication**: Register and log in to leave reviews.
+- **Review System**: Users can submit ratings and comments for matcha cafes.
+- **Interactive Map**: Displays matcha cafes near the user, allowing for easy discovery.
+- **Search Functionality**: Users can search for matcha cafes using the Mapbox API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Supabase (PostgreSQL database, authentication, and API)
+- **Maps & Location**: Mapbox API, Geocoding API
+- **Routing**: React Router
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js and npm installed
+- Supabase project set up with tables for matcha cafes and reviews
+- Mapbox API key
+- Geocoding API key
+
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/aleung30/find-your-matcha.git
+   cd find-your-matcha
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Set up environment variables:
+   - Create a `.env` file in the root directory
+   - Add your **Supabase URL**, **Supabase Anon Key**, **Mapbox API Key**, and **Geocoding API Key**:
+     ```sh
+     VITE_SUPABASE_URL=your_supabase_url
+     VITE_SUPABASE_KEY=your_supabase_anon_key
+     VITE_MAPBOX_KEY=your_mapbox_access_token
+     VITE_GEOCODE_KEY=your_geocode_key
+     ```
+
+### Running the App
+To start the development server:
+```sh
+npm run dev
+```
+The app will be available at `http://localhost:5173`
+
+## What We Learned
+Through building this project, we gained experience in:
+- **Figma Prototyping**: Designing UI and interactive elements.
+- **React**: Gaining experience with component-based architecture, state management, and handling user interactions.
+- **Supabase Integration**: Managing authentication and database interactions.
+- **Mapbox API**: Displaying interactive maps and fetching location-based data.
+
+## Future Improvements
+- Implement filtering by rating and distance
+- Improve UI/UX based on user feedback
+
+## Contributors
+- Anita Leung
+- Justinne Baltazar
+- Rio Maruyama
